@@ -1,1 +1,116 @@
+# CONFORM Full Flow Guide 5.8
+
+## Table of Contents
+- [Custom Configuration](#custom-configuration)
+- [CONFORM Full Flow](#conform-full-flow)
+- [Appendix A: Troubleshooting Instructions](#appendix-a-troubleshooting-instructions)
+
+---
+
+## Custom Configuration
+
+Enter values for entities that are to be created during the execution of the CONFORM full flow.
+
+| Entity | Example |
+|--------|---------|
+| Company Type | CRO |
+| Company/Client | HappyClient |
+| Healthcare Provider | BioFortis |
+| Therapeutic Area | ORTHOPEDICS |
+| Data Provider WF Template | DataProvider |
+| Data Processing WF Template | DataProcessing |
+| Data Provider | Quanticate |
+| User Role for Approver | WF Approver |
+| User Role | Data Manager |
+| User Group | Data Managers |
+| User Name | James Bond |
+| Study ID | NCT00007777 |
+| Activity/Domain 1 | Adverse Events |
+| Activity/Domain 2 | Demographics |
+| Activity/Domain 3 | Medical History |
+| Collection Standard | CDASH |
+| Review Standard | SDTM |
+
+After filling out the form above, save this document as a PDF and continue reading from the PDF file.
+
+---
+
+## CONFORM Full Flow
+
+### Logging In
+1. **Log in** to CONFORM using platform-level credentials.
+2. **Select** the `PM` application.
+
+### Creating Company and Client
+1. Navigate to the `COMPANY TYPES` tab and create a company type.
+2. Go to the `COMPANIES` tab and create a company of the defined type.
+3. In the `CLIENTS` tab, create a client.
+4. Under `CLIENTS`, click `Client Divisions` and create a new division.
+
+### Configuring the Environment
+1. Set up an environment for each CONFORM application within the division.
+2. Click `Configuration` next to each application to configure the database.
+
+### Creating Dictionaries
+1. Navigate to the `DICTIONARIES` tab and select `Healthcare Providers`.
+2. Click `Create New Item` and create a healthcare provider.
+3. Similarly, create a `Therapeutic Area`.
+
+### Setting Up Workflow Templates
+1. Go to the `WF` application.
+2. In `WF TEMPLATES`, click `Create Workflow Template` and create the necessary workflow templates.
+
+### Creating Data Providers
+1. Go to the `iHub` application.
+2. Under `ADMINISTRATION > Data Providers`, click `Create` and set up a new data provider.
+3. Select workflow templates and originators as needed.
+
+### Running System Scripts
+1. Run a script to populate system entities across CONFORM applications.
+2. Verify configurations by logging in with division-level credentials.
+
+### Verifications
+- **EMS Application:** Verify event types, event categories, and property types.
+- **WF Application:** Confirm workflow templates, categories, and rules.
+- **CDL Application:** Ensure study areas are correctly assigned.
+- **iHub Application:** Check naming conventions and area-role associations.
+- **IQ Application:** Verify issue categories and study profiles.
+- **JEM Application:** Validate job categories and management settings.
+- **SIR Application:** Check reference libraries and study phases.
+- **ADM Application:** Configure roles and permissions.
+
+### Study Configuration
+1. **Create a Study** in the `SIR` application.
+2. **Assign Collection and Review Standards** to the study.
+3. **Set Up Study Activities** and **assign workflow templates**.
+4. **Configure Data Processing Standards** for review and approval.
+5. **Associate Users and Roles** within the `ADM` application.
+6. **Submit and Approve Configurations**.
+
+### Manual Data Upload
+1. **Upload CSV files** with study data via `iHub`.
+2. **Run Batch Jobs** in `JEM` for data processing.
+3. **Validate Data in IQ Application**.
+
+### Study Approval Process
+1. **Submit Collection Standards for Approval** in `MDR`.
+2. **Review and Approve Standards** in `WF` application.
+3. **Verify Study Data and Run Final Checks**.
+
+---
+
+## Appendix A: Troubleshooting Instructions
+
+| Application | Problem | Probable Reason | Solution |
+|-------------|---------|----------------|----------|
+| JEM | Job type not generated | Collection standard not associated | Associate study activities with collection standard |
+| JEM | Batch job failed | Batch engine error | Restart data audit and rerun batch job |
+| MDR | Standard stuck in review | System error | Run `MDR_ReviewRequestCancel` job in JEM |
+| SIR | Data provider missing | Not imported | Import from Platform level |
+| WF | No workflow templates | Templates not created | Create workflow templates at Platform level |
+| iHub | Manual upload failed | Lost AWS connection | Retry upload after system recovery |
+
+---
+
+### **End of Document**
 
