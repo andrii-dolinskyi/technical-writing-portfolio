@@ -50,6 +50,7 @@ After filling out the form above, save this document as a PDF and continue readi
 ### Configuring the Environment
 1. Set up an environment for each CONFORM application within the division.
 2. Click `Configuration` next to each application to configure the database.
+3. Contact the dev team for configuration details if needed.
 
 ### Creating Dictionaries
 1. Navigate to the `DICTIONARIES` tab and select `Healthcare Providers`.
@@ -84,7 +85,7 @@ After filling out the form above, save this document as a PDF and continue readi
 2. **Assign Collection and Review Standards** to the study.
 3. **Set Up Study Activities** and **assign workflow templates**.
 4. **Configure Data Processing Standards** for review and approval.
-5. **Associate Users and Roles** within the `ADM` application.
+5. **Associate Users and Roles** in the `ADM` application.
 6. **Submit and Approve Configurations**.
 
 ### Manual Data Upload
@@ -94,8 +95,8 @@ After filling out the form above, save this document as a PDF and continue readi
 
 ### Study Approval Process
 1. **Submit Collection Standards for Approval** in `MDR`.
-2. **Review and Approve Standards** in `WF` application.
-3. **Verify Study Data and Run Final Checks**.
+2. **Review and Approve Standards** in `WF`.
+3. **Verify Study Data in IQ and Run Final Checks**.
 
 ---
 
