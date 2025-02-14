@@ -1,117 +1,118 @@
 # CONFORM Full Flow Guide 5.8
 
-## Table of Contents
-- [Custom Configuration](#custom-configuration)
-- [CONFORM Full Flow](#conform-full-flow)
-- [Appendix A: Troubleshooting Instructions](#appendix-a-troubleshooting-instructions)
-
----
-
 ## Custom Configuration
 
-Enter values for entities that are to be created during the execution of the CONFORM full flow.
+Below, enter values for entities that are to be created during the execution of the CONFORM full flow. These entities are as follows:
 
-| Entity | Example |
-|--------|---------|
-| Company Type | CRO |
-| Company/Client | HappyClient |
-| Healthcare Provider | BioFortis |
-| Therapeutic Area | ORTHOPEDICS |
-| Data Provider WF Template | DataProvider |
-| Data Processing WF Template | DataProcessing |
-| Data Provider | Quanticate |
-| User Role for Approver | WF Approver |
-| User Role | Data Manager |
-| User Group | Data Managers |
-| User Name | James Bond |
-| Study ID | NCT00007777 |
-| Activity/Domain 1 | Adverse Events |
-| Activity/Domain 2 | Demographics |
-| Activity/Domain 3 | Medical History |
-| Collection Standard | CDASH |
-| Review Standard | SDTM |
+| **Entity**                | **Value**                                 |
+|---------------------------|-------------------------------------------|
+| Company type              | **CRO**                                   |
+| Company/client            | **HappyClient**                           |
+| Healthcare provider       | **BioFortis**                             |
+| Therapeutic area          | **ORTHOPEDICS**                           |
+| Data provider WF template | **DataProvider**                          |
+| Data processing WF template |**DataProcessing**                       |
+| Data provider             | **Quanticate**                            |
+| User role for approver    | **WF Approver**                           |
+| User role                 | **Data Manager**                          |
+| User group                | **Data Managers**                         |
+| User name                 | **James Bond**                            |
+| Study ID                  | **NCT00007777**                           |
+| Activity/domain 1         | **Adverse Events**                        |
+| Activity/domain 2         | **Demographics**                          |
+| Activity/domain 3         | **Medical History**                       |
+| Collection standard       | **CDASH**                                 |
+| Review standard           | **SDTM-**                                 |
 
-After filling out the form above, save this document as a PDF and continue reading from the PDF file.
 
----
+## CONFORM Full Flow Guide
 
-## CONFORM Full Flow
+There can be many different scenarios on how the data can be acquired and processed in CONFORM. The main purpose of this document is to provide an overview of the main features of cross-CONFORM applications and their interrelationship when creating a new client environment. This manual describes only one example scenario.
 
-### Logging In
-1. **Log in** to CONFORM using platform-level credentials.
-2. **Select** the `PM` application.
+The following is a sample scenario explaining how the CONFORM full flow may be implemented and executed:
 
-### Creating Company and Client
-1. Navigate to the `COMPANY TYPES` tab and create a company type.
-2. Go to the `COMPANIES` tab and create a company of the defined type.
-3. In the `CLIENTS` tab, create a client.
-4. Under `CLIENTS`, click `Client Divisions` and create a new division.
+![CONFORM full flow steps](media/image2.png)
 
-### Configuring the Environment
-1. Set up an environment for each CONFORM application within the division.
-2. Click `Configuration` next to each application to configure the database.
-3. Contact the dev team for configuration details if needed.
+1. **Log in to CONFORM** using your platform-level credentials[^1] and select the PM application.
+2. **Create a company type** in the PM application under the **COMPANY TYPES** tab.
+3. **Create a company** in the PM application under the **COMPANIES** tab.
+4. **Create a client** in the PM application under the **CLIENTS** tab.
+5. **Create a division** for your client under the **CLIENTS** tab.
+6. **Configure the environment** for each CONFORM application within the division.
+7. **Create a healthcare provider** in the PM application under the **DICTIONARIES** tab.
+8. **Create a therapeutic area** in the PM application under the **DICTIONARIES** tab.
+9. **Verify platform-level configurations** before proceeding.
+10. **Create workflow templates** in the WF application.
+11. **Create a data provider** in the iHub application.
+12. **Run a script** to populate system entities.
+13. **Log in to CONFORM** using division-level credentials[^12].
+14. **Verify populated entities** in the EMS application.
+15. **Verify workflow templates** in the WF application.
+16. **Verify areas** in the CDL application.
+17. **Verify naming conventions** in the iHub application.
+18. **Associate roles with landing areas** in the iHub application.
+19. **Verify issue categories** in the IQ application.
+20. **Verify job types** in the JEM application.
+21. **Enable job types** in the JEM application.
+22. **Verify reference library items** in the SIR application.
+23. **Create user roles** in the ADM application.
+24. **Create a user group** in the ADM application.
+25. **Create a user** in the ADM application.
+26. **Approve role-user association** in the WF application.
+27. **Associate roles with workflow types** in the WF application.
+28. **Import workflow templates** in the WF application.
+29. **Import a data provider** in the iHub application.
+30. **Create a study** in the SIR application.
+31. **Assign CIF and landing area** to the study in the SIR application.
+32. **Add activities** to the study in the SIR application.
+33. **Assign a data provider** to the study in the SIR application.
+34. **Create a collection standard** in the MDR application.
+35. **Create domains and data elements** in the MDR application.
+36. **Define keys** for each domain in the MDR application.
+37. **Assign attributes** to data elements in the MDR application.
+38. **Apply blinding rules** in the MDR application.
+39. **Create a review standard** in the MDR application.
+40. **Copy domains** from the collection standard to the review standard in the MDR application.
+41. **Map standards** in the MDR application.
+42. **Apply transformations** in the MDR application.
+43. **Submit the collection standard** for review and approval in the MDR application.
+44. **Review and approve the collection standard** in the WF application.
+45. **Submit the review standard** for approval in the MDR application.
+46. **Review and approve the review standard** in the WF application.
+47. **Associate activities with collection standard domains** in the SIR application.
+48. **Associate a workflow template with a data provider** in the SIR application.
+49. **Add a site** to the study in the SIR application.
+50. **Associate a data provider with a site** in the SIR application.
+51. **Create subjects** in the SIR application.
+52. **Assign a review standard** to the Review area of the study CIF in the SIR application.
+53. **Submit the data provider for approval** in the SIR application.
+54. **Indicate the study conduct status** in the SIR application.
+55. **Approve data provider settings** in the WF application.
+56. **Prepare Batch jobs** for the study in the JEM application.
+57. **Activate Batch jobs** in the JEM application.
+58. **Create rules** for Batch jobs in the JEM application.
+59. **Associate rules with Batch jobs** in the JEM application.
+60. **Initiate manual data upload** in the iHub application.
+61. **Verify successful data upload** in the WF application.
+62. **Verify successful data upload** in the CDL application.
+63. **Verify successful Batch job execution** in the JEM application.
+64. **Verify data in the IQ application**.
+65. **Review and resolve data issues** in the IQ application.
 
-### Creating Dictionaries
-1. Navigate to the `DICTIONARIES` tab and select `Healthcare Providers`.
-2. Click `Create New Item` and create a healthcare provider.
-3. Similarly, create a `Therapeutic Area`.
+## Appendix A. Troubleshooting Instructions
 
-### Setting Up Workflow Templates
-1. Go to the `WF` application.
-2. In `WF TEMPLATES`, click `Create Workflow Template` and create the necessary workflow templates.
+| **Problem**                                                                 | **Probable Reason**                                                                 | **Solution**                                                                 |
+|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| The job type has not been generated for study in the **Source** area.       | The collection standard has not been associated with study activities.             | Associate study activities with the collection standard.                     |
+| The job type has not been generated for study in the **Review** area.       | The review standard has not been associated with the **Review** area of CIF.       | Assign the review standard to the Review area of the study CIF.              |
+| The Batch job run has failed.                                               | The Batch engine failed to run the study audit.                                    | Restart the failed Batch job manually.                                       |
+| The Batch job is not in the job history in any area.                        | The job rules have not been configured properly.                                   | Edit the necessary rules and associate them with the Batch job.              |
+| A standard is stuck in the **Sent for Review** or **In Review** status.     | System error.                                                                      | Create a job type with the MDR_ReviewRequestCancel agent and run it manually.|
+| A data provider is not available for association with the study.            | The data provider has not been imported to a new environment.                      | Import the data provider from the Platform level.                            |
+| No workflow templates are available for import.                             | The workflow templates have not been created at the **Platform** level.            | Create workflow templates at the Platform level.                             |
+| The task to approve data provider settings is not available.                | Your user role is not associated with the **Approve DP Settings** workflow type.   | Enable the assignment of actors to the Approve DP Settings workflow type.    |
+| The task to approve MDR standards is not available.                         | Your user role is not associated with the **Workflow for MDR Approve** workflow type.| Enable the assignment of actors to the Workflow for MDR Approve workflow type.|
+| One or more tasks of the preliminary validation have failed.                | Wrong configuration of the collection standard in MDR.                             | Fix errors in the collection standard and re-upload files.                   |
+| The manual upload of files is not successful.                               | iHub has lost connection to the AWS server.                                        | Wait for the system to start working again and retry the upload.             |
 
-### Creating Data Providers
-1. Go to the `iHub` application.
-2. Under `ADMINISTRATION > Data Providers`, click `Create` and set up a new data provider.
-3. Select workflow templates and originators as needed.
-
-### Running System Scripts
-1. Run a script to populate system entities across CONFORM applications.
-2. Verify configurations by logging in with division-level credentials.
-
-### Verifications
-- **EMS Application:** Verify event types, event categories, and property types.
-- **WF Application:** Confirm workflow templates, categories, and rules.
-- **CDL Application:** Ensure study areas are correctly assigned.
-- **iHub Application:** Check naming conventions and area-role associations.
-- **IQ Application:** Verify issue categories and study profiles.
-- **JEM Application:** Validate job categories and management settings.
-- **SIR Application:** Check reference libraries and study phases.
-- **ADM Application:** Configure roles and permissions.
-
-### Study Configuration
-1. **Create a Study** in the `SIR` application.
-2. **Assign Collection and Review Standards** to the study.
-3. **Set Up Study Activities** and **assign workflow templates**.
-4. **Configure Data Processing Standards** for review and approval.
-5. **Associate Users and Roles** in the `ADM` application.
-6. **Submit and Approve Configurations**.
-
-### Manual Data Upload
-1. **Upload CSV files** with study data via `iHub`.
-2. **Run Batch Jobs** in `JEM` for data processing.
-3. **Validate Data in IQ Application**.
-
-### Study Approval Process
-1. **Submit Collection Standards for Approval** in `MDR`.
-2. **Review and Approve Standards** in `WF`.
-3. **Verify Study Data in IQ and Run Final Checks**.
-
----
-
-## Appendix A: Troubleshooting Instructions
-
-| Application | Problem | Probable Reason | Solution |
-|-------------|---------|----------------|----------|
-| JEM | Job type not generated | Collection standard not associated | Associate study activities with collection standard |
-| JEM | Batch job failed | Batch engine error | Restart data audit and rerun batch job |
-| MDR | Standard stuck in review | System error | Run `MDR_ReviewRequestCancel` job in JEM |
-| SIR | Data provider missing | Not imported | Import from Platform level |
-| WF | No workflow templates | Templates not created | Create workflow templates at Platform level |
-| iHub | Manual upload failed | Lost AWS connection | Retry upload after system recovery |
-
----
-
-### **End of Document**
-
+##End of Document
