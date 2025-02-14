@@ -1,0 +1,76 @@
+# Features and Improvements
+
+The changes introduced in this release include the following:
+
+| REQ#       | Description                                                                 |
+|------------|-----------------------------------------------------------------------------|
+| RQ10793    | Now it is possible to create a new code list from a file located in the CDL application. |
+| RQ15543    | A new function called **STUDY DAY CALCULATION** has been introduced. It can be applied to the source data element when configuring data transformations to calculate a study day based on the event and the referenced date. |
+| RQ15545    | A new function called **AGE CALCULATION** has been introduced. It can be applied to the source data element when configuring data transformations to calculate the age based on the subject's birth date and the referenced date. |
+| RQ16272    | The system can now automap keys when using the JOIN operator, simplifying the data transformation configuration process. |
+| RQ16833    | The hierarchy level icons have been changed for consistency with other CONFORM applications. |
+| RQ16837    | Now it is possible to create a draft from any approved version of controlled terminology. |
+| RQ16852    | MDR can now check and return information about blinding settings in different versions of a standard upon request from other CONFORM applications. |
+| RQ16983    | Now it is possible to save a version of a standard in the **Ready for Testing** status in the Development lifecycle. |
+| RQ17264    | Now it is possible to send standards with the **Ready for Testing** status for review and approval. |
+| RQ17663    | Now it is possible to create a draft from the standard with the **Ready for Testing** status. |
+| RQ17758    | The application UI performance has been enhanced to improve the user experience. |
+| RQ17781    | Now it is possible to download SDTM DSP Logical standards as XLS files. |
+| RQ17782    | Now it is possible to add tags to metadata objects and search the objects by added tags. |
+| RQ17783    | When creating a validation rule, only suitable issue types are displayed at the Issue attributes stage. |
+| RQ20034    | Now it is possible to search metadata objects by keywords, such as TA name, study name, dictionary name, standard name, domain name, domain code, data element name, code list name, and validation rule name. |
+| RQ20035    | In the date format editor, new placeholders have been added to facilitate precise data range configuration. |
+| RQ20039    | The **Impact Analysis** feature has been introduced. It allows performing impact analysis for a standard and generating a report to understand what child entities must be updated to maintain consistency with the parent standard. |
+| RQ20048    | Now you can add attributes for controlled terminology, edit, view, and delete them. |
+| RQ20077    | The **Dependency Analysis** feature has been introduced. It allows performing dependency analysis for a domain and a data element. |
+| RQ20134    | With the generated report, you can understand where the domain or data element is being used. |
+| RQ20135    | When configuring a mapping, you can search for a property in any drop-down property list by typing the property's name. |
+| RQ20146    | The Business Rule Templates table grid has been enhanced. User-friendly template names and descriptions are now displayed. |
+| RQ20147    | When configuring a mapping, you must set a date format for a new column if the Processing data type field equals "DATETIME". |
+| RQ20221    | AWS logs created as a result of CONFORM application processes no longer contain authentication information, improving operational safety. |
+| RQ20264    | The date format editor preview has been updated. |
+| RQ20306    | The **Core Univariate Validations** property has been updated in the create and edit forms for standards, domains, and data elements. |
+| RQ20318    | The application now suggests running metadata validations for a standard if it contains at least one validation rule with the **Metadata Validation** template class in the Enabled state. |
+| RQ20319    | Now it is possible to create a standard from a file stored on your device. |
+| RQ20602    | Now it is possible to create controlled terminology from a file stored on your device. |
+| RQ20603    | The **Apply changes** option is now available for SDTM DSP Logical category standards. |
+| RQ20622    | Now it is possible to edit SDTM DSP Logical category standards. |
+| RQ20623    | When creating a standard manually or from an uploaded file, you need to select a standard category. The standard type is displayed as a read-only field in the standard creation form. |
+| RQ20719    | The **Apply updates** functionality has been updated: <br> - The **Show only different** toggle has been introduced to display only changed entities. <br> - The system shows the latest version of a parent standard by default. <br> - In the **Parent version** column, checkboxes enable selection of entities to which changes are to be applied. |
+| RQ20720    | The **Create validation rule** form has been improved: <br> - At the **Select the template** stage, you need to answer questions about your goals so the system can show relevant rule templates. <br> - At the **Issue attributes** stage, you can configure new issue attributes to ensure the needed issue generation. |
+| RQ20724    | User role access rights to perform actions have been improved. |
+| RQ20727    | Now it is possible to create a validation rule within the user's standard based on a validation rule that has already been created within another standard. |
+| RQ20729    | To facilitate batch application processing of mappings configured in MDR, the **Data Processing Type** property is now used instead of the **Data Type** property. |
+| RQ20733    | Now it is not possible to delete a standard if it is being used in the DSP application. |
+| RQ20766    | The system no longer changes the version of metadata objects when tags are added, edited, or deleted. |
+| RQ20775    | A confirmation message is now displayed when creating a standard, controlled terminology, or controlled terminology package. |
+| RQ20805    | The **Shared Data Elements** functionality has been added. You can now create and manage shared data elements, eliminating the need to recreate the same data elements for different standards. |
+| RQ20877    | Blinded metadata objects now have a dedicated icon displayed next to them for easy identification. |
+| RQ20879    | Business rule templates now have one of four possible scope values: **Data Element**, **Domain**, **Cross-Domain**, and **Cross-Standard**. These new scope values are displayed in the Business Rule Templates table grid. |
+| RQ20884    | In the **Date Format Editor**, a space delimiter can now be used to split the date and time. |
+| RQ20885    | Now you can associate SDTM DSP Logical category standards with other standards so other applications (e.g., DSP) can find linked standards by request. |
+| RQ21141    | When an SDTM DSP Logical category standard with associated standards is sent for review and approval, the associated standards are also sent for review and approval. |
+| RQ21170    | In the **Copy standard to target hierarchy** form, you can now select other standards to associate with the SDTM DSP Logical category standard being copied. |
+| RQ21173    | Now it is possible to create snapshots (labels) for domains of the **Collection** category so the DSP application can use them for processing clinical trial data. |
+| RQ21175    | Now it is possible to add a custom origin to a data element in addition to choosing from predefined origins. |
+| RQ21176    | Now you can check out a metadata object you own to prevent other users from changing or deleting it. |
+| RQ21178    | The **Review** category standard type, **SDTM-**, has been added to the **Create Standard** form, allowing users to create SDTM- review standards. |
+| RQ21199    | The UI of the **Copy to** dialog box has been visually improved. |
+| RQ21203    | It is no longer possible to associate documents with standards or domains. The **DOCUMENTS** tab is hidden from the standard Details page, and it is not possible to associate documents when creating or editing a domain. |
+| RQ21222    | The **eCRF** tab is no longer available at the Details page of metadata objects. The **Annotate eCRF** option is no longer available for standards. |
+| RQ21226    | Under the **VALIDATION RULES** tab of the Standard details page, if there is a validation rule based on a retired template, the validation rule name is highlighted to notify you about the problem with the rule. |
+| RQ21227    | The results of the following options can now be exported to an XLS file: <br> - For standards: **Compare Versions** and **Compare Standards** <br> - For controlled terminologies: **Compare Versions** and **Compare Controlled Terminology** |
+| RQ21256    | The following improvements have been implemented for domain blinding: <br> - The **Apply blinding** option has been renamed to **Blinding settings**. <br> - The message in the confirmation dialog box that appears upon selection of the **Blinding settings** option has been updated. |
+| RQ21258    | The following improvements have been implemented for controlled terminology: <br> - You can create controlled terminology at the **Company**, **Division**, **TA**, and **Study** levels. <br> - Users can create, update, and delete snapshots (unique labels) for controlled terminology and view the snapshot version history. <br> - Users can send controlled terminology for review and approval. <br> - Users can link and unlink controlled terminology. <br> - The **GCN Management** option is available for controlled terminology. <br> - Users can download controlled terminology in the ODM file format. <br> - Users can apply the **Compare Versions** and **Compare Controlled Terminology** options to controlled terminology. <br> - Users can duplicate controlled terminology. <br> - Users can copy controlled terminology from one hierarchy level to another. <br> - Users can add, edit, and delete tags for controlled terminology. <br> - Users can view controlled terminology associated with a standard. |
+| RQ21528    | All existing code lists have been moved to their respective controlled terminologies, which now exist as separate entities. |
+| RQ21544    | You can manage code lists within the controlled terminology to which they belong. This includes viewing details, editing, adding to bookmarks, copying to another hierarchy level, duplicating, comparing code lists and their versions, downloading in ODM or XLS format, and deleting. |
+| RQ21545    | You can associate a code list with a data element. |
+| RQ21546    | Now it is possible to create standards from ODM files that contain domains with no data elements. It is also possible to download standards as ODM files even if they contain domains with no data elements. |
+| RQ21547    | The system no longer sends events of the "MDR_BlindingRulesUpdated" type when blinding rules for a standard are created, updated, or deleted, as other processes make this unnecessary. |
+| RQ21548    | Now it is possible to send standards with associated controlled terminology for review and approval. |
+| RQ21549    | Now it is possible to duplicate standards, domains, and data elements with associated controlled terminology. |
+| RQ21550    | When creating a domain from an existing one (using the **Copy from existing with linking** option), it is now possible to map code lists with the data elements from the selected domains. |
+| RQ21551    | When creating a standard from an existing one (i.e., copying a standard), the controlled terminology associated with the original standard is also copied, maintaining the association. |
+| RQ21552    | The system can now return the URL with the path to a study upon request from other applications. |
+| RQ21553    | Now it is possible to create, edit, and delete controlled terminology at the **Industry** level at the platform-level division. |
+| RQ21554    | Now it is possible to send controlled terminology for review and approval at the **Industry** level at the platform-level division. |
