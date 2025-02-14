@@ -25,8 +25,7 @@ I'm a **Senior Technical Writer** with 4+ years of experience in creating clear,
 ✔ Designed a full-flow guide explaining the entire data management platform from A to Z.  
 ✔ Led documentation efforts using **topic-based authoring** and **single-sourcing** for efficient content reuse.  
 ✔ Integrated **ChatGPT** into research and drafting processes to improve documentation efficiency.  
-✔ Created UML diagrams in **LucidCharts** or **Drawio**.
-✔ Drew interactive prototypes in **Axure/Figma** to visually explain complex systems.  
+✔ Created UML diagrams in **LucidCharts** or **Drawio** and drew interactive prototypes in **Axure/Figma** to visually explain complex systems.  
 ✔ Mentored junior technical writers and contributed to documentation best practices.  
 
 ---
