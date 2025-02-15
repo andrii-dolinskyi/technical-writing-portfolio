@@ -1,0 +1,188 @@
+# GitHub API Documentation
+
+## Overview
+
+The GitHub REST API allows developers to interact programmatically with GitHub's repositories, users, and other resources. This document provides an overview of how to use the API and examples of common requests.
+
+### Base URL
+
+```
+https://api.github.com
+```
+
+## Authentication
+
+Most requests to the GitHub API require authentication. You can authenticate using:
+
+- **Personal Access Tokens (PAT)**
+- **OAuth Apps**
+- **GitHub Apps**
+
+Include the token in the `Authorization` header:
+
+```http
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+## Endpoints
+
+### 1. Get User Information
+
+Retrieve public information about a GitHub user.
+
+**Endpoint:**
+
+```
+GET /users/{username}
+```
+
+**Example Request:**
+
+```bash
+curl -H "Accept: application/vnd.github.v3+json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     https://api.github.com/users/octocat
+```
+
+**Response:**
+
+```json
+{
+  "login": "octocat",
+  "id": 583231,
+  "avatar_url": "https://avatars.githubusercontent.com/u/583231?v=4",
+  "name": "The Octocat",
+  "company": "GitHub",
+  "location": "San Francisco",
+  "public_repos": 8
+}
+```
+
+---
+
+### 2. List Repositories of a User
+
+Retrieve all public repositories for a given GitHub user.
+
+**Endpoint:**
+
+```
+GET /users/{username}/repos
+```
+
+**Example Request:**
+
+```bash
+curl -H "Accept: application/vnd.github.v3+json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     https://api.github.com/users/octocat/repos
+```
+
+**Response:**
+
+```json
+[
+  {
+    "id": 1296269,
+    "name": "Hello-World",
+    "full_name": "octocat/Hello-World",
+    "private": false,
+    "owner": {
+      "login": "octocat",
+      "id": 583231
+    },
+    "html_url": "https://github.com/octocat/Hello-World"
+  }
+]
+```
+
+---
+
+### 3. Create a New Repository
+
+Creates a new repository in the authenticated user’s account.
+
+**Endpoint:**
+
+```
+POST /user/repos
+```
+
+**Example Request:**
+
+```bash
+curl -X POST -H "Accept: application/vnd.github.v3+json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     -d '{
+       "name": "new-repo",
+       "description": "My new repository",
+       "private": false
+     }' \
+     https://api.github.com/user/repos
+```
+
+**Response:**
+
+```json
+{
+  "id": 123456789,
+  "name": "new-repo",
+  "full_name": "your-username/new-repo",
+  "private": false,
+  "html_url": "https://github.com/your-username/new-repo"
+}
+```
+
+---
+
+### 4. List Issues for a Repository
+
+Retrieve a list of issues for a specific repository.
+
+**Endpoint:**
+
+```
+GET /repos/{owner}/{repo}/issues
+```
+
+**Example Request:**
+
+```bash
+curl -H "Accept: application/vnd.github.v3+json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     https://api.github.com/repos/octocat/Hello-World/issues
+```
+
+**Response:**
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Found a bug",
+    "state": "open",
+    "user": {
+      "login": "octocat"
+    },
+    "created_at": "2024-02-16T12:34:56Z"
+  }
+]
+```
+
+## Rate Limiting
+
+GitHub API has rate limits based on authentication:
+
+- **Unauthenticated requests:** 60 requests per hour
+- **Authenticated requests:** 5,000 requests per hour
+
+Check rate limits using:
+
+```bash
+curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     https://api.github.com/rate_limit
+```
+
+## Conclusion
+
+This document outlines how to interact with GitHub's API to retrieve user data, repositories, and issues and create new repositories. For more details, visit [GitHub REST API Docs](https://docs.github.com/en/rest).
