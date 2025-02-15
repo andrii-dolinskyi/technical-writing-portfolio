@@ -2,7 +2,7 @@
 
 The changes introduced in this release include the following:
 
-| REQ#       | Description                                                                 |
+| **REQ#**   | **Description**                                                             |
 |------------|-----------------------------------------------------------------------------|
 | RQ10793    | Now it is possible to create a new code list from a file located in the CDL application. |
 | RQ15543    | A new function called **STUDY DAY CALCULATION** has been introduced. It can be applied to the source data element when configuring data transformations to calculate a study day based on the event and the referenced date. |
@@ -20,14 +20,14 @@ The changes introduced in this release include the following:
 | RQ17783    | When creating a validation rule, only suitable issue types are displayed at the Issue attributes stage. |
 | RQ20034    | Now it is possible to search metadata objects by keywords, such as TA name, study name, dictionary name, standard name, domain name, domain code, data element name, code list name, and validation rule name. |
 | RQ20035    | In the date format editor, new placeholders have been added to facilitate precise data range configuration. |
-| RQ20039    | The **Impact Analysis** feature has been introduced. It allows performing impact analysis for a standard and generating a report to understand what child entities must be updated to maintain consistency with the parent standard. |
-| RQ20048    | Now you can add attributes for controlled terminology, edit, view, and delete them. |
+| RQ20039    | The **Impact Analysis** feature has been introduced. It allows for the performance of impact analysis for a standard and the generation of a report to understand what child entities must be updated to maintain consistency with the parent standard. |
+| RQ20048    | Now you can add attributes for controlled terminology, and edit, view, and delete them. |
 | RQ20077    | The **Dependency Analysis** feature has been introduced. It allows performing dependency analysis for a domain and a data element. |
 | RQ20134    | With the generated report, you can understand where the domain or data element is being used. |
 | RQ20135    | When configuring a mapping, you can search for a property in any drop-down property list by typing the property's name. |
 | RQ20146    | The Business Rule Templates table grid has been enhanced. User-friendly template names and descriptions are now displayed. |
 | RQ20147    | When configuring a mapping, you must set a date format for a new column if the Processing data type field equals "DATETIME". |
-| RQ20221    | AWS logs created as a result of CONFORM application processes no longer contain authentication information, improving operational safety. |
+| RQ20221    | AWS logs created as a result of CONFORM application process no longer contain authentication information, improving operational safety. |
 | RQ20264    | The date format editor preview has been updated. |
 | RQ20306    | The **Core Univariate Validations** property has been updated in the create and edit forms for standards, domains, and data elements. |
 | RQ20318    | The application now suggests running metadata validations for a standard if it contains at least one validation rule with the **Metadata Validation** template class in the Enabled state. |
@@ -57,7 +57,7 @@ The changes introduced in this release include the following:
 | RQ21178    | The **Review** category standard type, **SDTM-**, has been added to the **Create Standard** form, allowing users to create SDTM- review standards. |
 | RQ21199    | The UI of the **Copy to** dialog box has been visually improved. |
 | RQ21203    | It is no longer possible to associate documents with standards or domains. The **DOCUMENTS** tab is hidden from the standard Details page, and it is not possible to associate documents when creating or editing a domain. |
-| RQ21222    | The **eCRF** tab is no longer available at the Details page of metadata objects. The **Annotate eCRF** option is no longer available for standards. |
+| RQ21222    | The **eCRF** tab is no longer available on the Details page of metadata objects. The **Annotate eCRF** option is no longer available for standards. |
 | RQ21226    | Under the **VALIDATION RULES** tab of the Standard details page, if there is a validation rule based on a retired template, the validation rule name is highlighted to notify you about the problem with the rule. |
 | RQ21227    | The results of the following options can now be exported to an XLS file: <br> - For standards: **Compare Versions** and **Compare Standards** <br> - For controlled terminologies: **Compare Versions** and **Compare Controlled Terminology** |
 | RQ21256    | The following improvements have been implemented for domain blinding: <br> - The **Apply blinding** option has been renamed to **Blinding settings**. <br> - The message in the confirmation dialog box that appears upon selection of the **Blinding settings** option has been updated. |
@@ -65,12 +65,12 @@ The changes introduced in this release include the following:
 | RQ21528    | All existing code lists have been moved to their respective controlled terminologies, which now exist as separate entities. |
 | RQ21544    | You can manage code lists within the controlled terminology to which they belong. This includes viewing details, editing, adding to bookmarks, copying to another hierarchy level, duplicating, comparing code lists and their versions, downloading in ODM or XLS format, and deleting. |
 | RQ21545    | You can associate a code list with a data element. |
-| RQ21546    | Now it is possible to create standards from ODM files that contain domains with no data elements. It is also possible to download standards as ODM files even if they contain domains with no data elements. |
+| RQ21546    | It is now possible to create standards from ODM files containing domains with no data elements. It is also possible to download standards as ODM files even if they contain domains with no data elements. |
 | RQ21547    | The system no longer sends events of the "MDR_BlindingRulesUpdated" type when blinding rules for a standard are created, updated, or deleted, as other processes make this unnecessary. |
-| RQ21548    | Now it is possible to send standards with associated controlled terminology for review and approval. |
-| RQ21549    | Now it is possible to duplicate standards, domains, and data elements with associated controlled terminology. |
+| RQ21548    | It is now possible to send standards with associated controlled terminology for review and approval. |
+| RQ21549    | It is now possible to duplicate standards, domains, and data elements with associated controlled terminology. |
 | RQ21550    | When creating a domain from an existing one (using the **Copy from existing with linking** option), it is now possible to map code lists with the data elements from the selected domains. |
 | RQ21551    | When creating a standard from an existing one (i.e., copying a standard), the controlled terminology associated with the original standard is also copied, maintaining the association. |
 | RQ21552    | The system can now return the URL with the path to a study upon request from other applications. |
-| RQ21553    | Now it is possible to create, edit, and delete controlled terminology at the **Industry** level at the platform-level division. |
-| RQ21554    | Now it is possible to send controlled terminology for review and approval at the **Industry** level at the platform-level division. |
+| RQ21553    | It is now possible to create, edit, and delete controlled terminology at the **Industry** level at the platform-level division. |
+| RQ21554    | It is now possible to send controlled terminology for review and approval at the **Industry** level at the platform-level division. |
