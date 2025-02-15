@@ -114,5 +114,3 @@ The following is a sample scenario explaining how the CONFORM full flow may be i
 | The task to approve MDR standards is not available.                         | Your user role is not associated with the **Workflow for MDR Approve** workflow type.| Enable the assignment of actors to the Workflow for MDR Approve workflow type.|
 | One or more tasks of the preliminary validation have failed.                | Wrong configuration of the collection standard in MDR.                             | Fix errors in the collection standard and re-upload files.                   |
 | The manual upload of files is not successful.                               | iHub has lost connection to the AWS server.                                        | Wait for the system to start working again and retry the upload.             |
-
-##End of Document
