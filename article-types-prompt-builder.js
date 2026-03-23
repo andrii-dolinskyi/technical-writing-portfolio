@@ -19,29 +19,6 @@ const articleData = {
   clientCountry:  cleanText(row['clientCountry']),
   clientProduct:  cleanText(row['clientProduct']),
   clientIndustry: cleanText(row['clientIndustry']),
-
-  ICPOneName:       cleanText(row['ICPOneName']),
-  ICPOneIndustry:   cleanText(row['ICPOneIndustry']),
-  ICPOneRegion:     cleanText(row['ICPOneRegion']),
-  ICPOneAudience:   cleanText(row['ICPOneAudience']),
-  ICPOnePainPoints: cleanText(row['ICPOnePainPoints']),
-
-  ICPTwoName:       cleanText(row['ICPTwoName']),
-  ICPTwoIndustry:   cleanText(row['ICPTwoIndustry']),
-  ICPTwoRegion:     cleanText(row['ICPTwoRegion']),
-  ICPTwoAudience:   cleanText(row['ICPTwoAudience']),
-  ICPTwoPainPoints: cleanText(row['ICPTwoPainPoints']),
-
-  ICPThreeName:       cleanText(row['ICPThreeName']),
-  ICPThreeIndustry:   cleanText(row['ICPThreeIndustry']),
-  ICPThreeRegion:     cleanText(row['ICPThreeRegion']),
-  ICPThreeAudience:   cleanText(row['ICPThreeAudience']),
-  ICPThreePainPoints: cleanText(row['ICPThreePainPoints']),
-
-  claimsAvoid:    cleanText(row['claimsAvoid']),
-  topicsAvoid:    cleanText(row['topicsAvoid']),
-  contentTone:    cleanText(row['contentTone']),
-  clientKeywords: cleanText(row['clientKeywords']),
 };
 
 const httpBody = {
@@ -80,46 +57,13 @@ const httpBody = {
     {
       role: "user",
       parts: [{
-        text: `Research the client's industry and identify what blog article types are most appropriate and effective for generating B2B leads in this field.
+        text: `Identify the client's industry and what the client does and sells, then research it in order to understand what blog article types are appropriate for this field.
 
----
-**CLIENT OVERVIEW**
-- Name: ${articleData.clientName}
-- Website: ${articleData.clientWebsite}
-- Country: ${articleData.clientCountry}
-- Industry: ${articleData.clientIndustry}
-- Products/Services: ${articleData.clientProduct}
-
----
-**TARGET AUDIENCES (ICPs)**
-
-${articleData.ICPOneName ? `**${articleData.ICPOneName}**
-- Industries: ${articleData.ICPOneIndustry}
-- Regions: ${articleData.ICPOneRegion}
-- Decision-makers: ${articleData.ICPOneAudience}
-- Pain points: ${articleData.ICPOnePainPoints}` : ''}
-
-${articleData.ICPTwoName ? `**${articleData.ICPTwoName}**
-- Industries: ${articleData.ICPTwoIndustry}
-- Regions: ${articleData.ICPTwoRegion}
-- Decision-makers: ${articleData.ICPTwoAudience}
-- Pain points: ${articleData.ICPTwoPainPoints}` : ''}
-
-${articleData.ICPThreeName ? `**${articleData.ICPThreeName}**
-- Industries: ${articleData.ICPThreeIndustry}
-- Regions: ${articleData.ICPThreeRegion}
-- Decision-makers: ${articleData.ICPThreeAudience}
-- Pain points: ${articleData.ICPThreePainPoints}` : ''}
-
----
-**CONTENT GUIDELINES**
-- Tone: ${articleData.contentTone}
-- Topics to avoid: ${articleData.topicsAvoid}
-- Claims to avoid: ${articleData.claimsAvoid}
-- Target keywords: ${articleData.clientKeywords}
-
----
-Based on all of the above, research and identify the most effective blog article types for this client's industry and ICPs.`
+Client Name: ${articleData.clientName}
+Client Website: ${articleData.clientWebsite}
+Client Country: ${articleData.clientCountry}
+Client Industry: ${articleData.clientIndustry}
+Client Products/Services: ${articleData.clientProduct}`
       }]
     }
   ],
