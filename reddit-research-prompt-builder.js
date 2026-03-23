@@ -17,30 +17,24 @@ const articleData = {
   clientProduct:  cleanText(row['clientProduct']),
   clientIndustry: cleanText(row['clientIndustry']),
 };
+const redditSearchUrl = `https://www.reddit.com/search/?q=${encodeURIComponent(articleData.clientIndustry)}&sort=relevance&t=all`;
 const httpBody = {
   model: "gemini-3.1-pro-preview",
   system_instruction: {
     parts: [{
-      text: `You are an Industry Research Specialist. You are an expert in analyzing industries, identifying blog article types with highest E-E-A-T scores for those industries, and providing specific examples.
-<critical_rules>
-- Conduct thorough industry research based on the client information in order to identify to which industry/sector they belong
-- Research blog article types that convert leads in this specific industry/sector of the client
-- Provide 5 specific examples per article type
-- Do NOT provide your meta-commentary
-- Do NOT invent article types
-- Do NOT invent examples for article types
-- Do NOT ever suggest article types and examples based on your training data because this must always come from research!
-</critical_rules>
+      text: `You are a Reddit community researcher. Your only job is to find real Reddit discussions, threads, and conversations related to a given industry.
+<research_rules>
+- Cover multiple research scenarios: questions people ask, problems they face, debates and comparisons, product/vendor experiences, how-to discussions, industry news reactions, and misconceptions being challenged
+- Find real Reddit threads — do NOT invent, paraphrase, or summarize from memory
+- Every entry must have a real Reddit URL
+- Do NOT provide meta-commentary in the response
+</research_rules>
 <output_format>
-**Blog article type [Article Type Number]:** [Article Type Name]
-- **Purpose:** [write one sentence explaining the purpose of this article type]
-- **Example 1:**
-  - **Title Example:** [provide a real example of an article title so the user can refer to the real example instead of the made-up one]
-  - **Key Points Discussed:** [summarize concisely what specific key points are discussed in this article, whose title you reffered]
-  - **URL:** [provide a link to the article example, whose title you reffered]
-[Continue with the remaining 4 examples for the same article type]
-[Then, continue with other article types and 5 examples for each of them]
-//ARTICLE_TYPES_END//
+DISCUSSION [number]: [The actual title or question from the Reddit thread]
+- TYPE: [Question / Problem / Debate / Experience / How-To / News Reaction / Misconception]
+- SUMMARY: [What people asked or discussed in this thread — key points only]
+- SOURCE: [Direct Reddit URL to the thread]
+[Repeat for all discussions found]
 </output_format>`
     }]
   },
@@ -48,18 +42,25 @@ const httpBody = {
     {
       role: "user",
       parts: [{
-        text: `Identify the client's industry and what the client does and sells, then research it in order to understand what blog article types are appropriate for this field.
-Client Name: ${articleData.clientName}
-Client Website: ${articleData.clientWebsite}
-Client Country: ${articleData.clientCountry}
-Client Industry: ${articleData.clientIndustry}
-Client Products/Services: ${articleData.clientProduct}`
+        text: `Search Reddit for real discussions, questions, and conversations in this industry: ${articleData.clientIndustry}
+Start by browsing this Reddit search URL to find relevant threads: ${redditSearchUrl}
+Cover as many of these angles as you find on Reddit:
+1. Questions people ask about this industry (how, why, what, which)
+2. Problems and frustrations people experience
+3. Comparisons and debates (e.g. Product A vs Product B, Method X vs Method Y)
+4. Personal experiences with vendors, products, or services
+5. How-to and DIY discussions
+6. Reactions to industry news or regulations
+7. Misconceptions or myths being challenged by the community`
       }]
     }
   ],
   tools: [
     {
       google_search: {}
+    },
+    {
+      urlContext: {}
     }
   ],
   generationConfig: {
