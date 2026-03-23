@@ -12,7 +12,7 @@ const icpPainPoints = (row['ICPPainPoints']  || '').trim();
 const clientName    = (row['clientName']    || '').trim();
 const clientProduct = (row['clientProduct'] || '').trim();
 
-// Build context lines only for fields that exist
+// Build context block — only include fields that exist
 const contextLines = [];
 if (icpIndustry)   contextLines.push(`Industry: ${icpIndustry}`);
 if (icpAudience)   contextLines.push(`Job titles / roles: ${icpAudience}`);
@@ -23,16 +23,16 @@ if (clientProduct) contextLines.push(`Client product: ${clientProduct}`);
 
 const buyerContext = contextLines.join('\n');
 
-const systemInstruction = `You are a B2B market researcher specializing in industrial buyer behavior. Your job is to find real, documented evidence of how a specific type of buyer thinks, talks, and behaves online.
+const systemPrompt = `You are a B2B market researcher specializing in industrial buyer behavior. Your job is to find real, documented evidence of how a specific type of buyer thinks, talks, and behaves online.
 
 <research_rules>
-- ONLY report what you find through live research — real threads, posts, documents, publications
+- ONLY report what you find through live web search — real threads, posts, documents, publications
 - Do NOT invent discussions, paraphrase from memory, or fabricate URLs
-- Do NOT generalize from what you know — search and verify
+- Do NOT generalize from training knowledge — search and verify each data point
 - If you cannot find a real source for a data point, omit it entirely
-- Every discussion entry must reference a real platform and a real URL
-- Every terminology entry must be traceable to a real source (job posting, RFP, trade publication, LinkedIn, standard)
-- Every vendor expectation entry must come from a real RFP, buyer report, review, or documented source
+- Every discussion entry must reference a real platform and include a real URL
+- Every terminology entry must be traceable to a real source (job posting, RFP, trade publication, LinkedIn, industry standard)
+- Every vendor expectation entry must come from a real RFP, buyer report, survey, or documented source
 </research_rules>
 
 <output_format>
@@ -42,7 +42,7 @@ Produce exactly three sections in this order. Use the exact section headers and 
 SECTION 1: FORUM & COMMUNITY DISCUSSIONS
 
 DISCUSSION [number]: [Exact thread title, post title, or question as it appears on the source platform]
-- PLATFORM: [Reddit / LinkedIn / Stack Exchange / industry forum / trade publication comments / other]
+- PLATFORM: [Reddit / LinkedIn / Stack Exchange / industry forum / trade publication / other]
 - URL: [Direct URL to the thread or post]
 - WHO IS DISCUSSING: [Describe who posted or replied — role, industry context if visible]
 - KEY CONCERNS OR PHRASES: [Quote or closely paraphrase the specific concerns, language, or questions raised]
@@ -54,10 +54,10 @@ DISCUSSION [number]: [Exact thread title, post title, or question as it appears 
 ---
 SECTION 2: TERMINOLOGY
 
-For each term, note the source type where you found it (job posting / RFP / trade publication / LinkedIn profile / industry standard / forum).
+For each entry, note the source type where you found it (job posting / RFP / trade publication / LinkedIn profile / industry standard / forum).
 
-TECHNICAL TERMS: [List of exact technical terms this buyer uses — one per line, with source type]
-ACRONYMS: [List of acronyms with their full meaning — one per line]
+TECHNICAL TERMS: [Exact technical terms this buyer uses — one per line, with source type]
+ACRONYMS: [Acronym: full meaning — one per line]
 PAIN POINT PHRASES: [Exact phrases this buyer uses when describing their problems — one per line, with source type]
 PROCUREMENT LANGUAGE: [Phrases found in RFPs, tenders, or procurement documents — one per line]
 
@@ -76,62 +76,45 @@ QUESTIONS THEY ASK VENDORS: [Real questions from forums, RFPs, or documented buy
 //EXPECTATIONS_END//
 </output_format>`;
 
-const userPrompt = `Research this B2B buyer profile and find real documented evidence of how they talk, what they discuss, and what they look for in a vendor.
+const userPrompt = `Research this B2B buyer profile and find real documented evidence of how they talk, what they discuss, and what they expect from a vendor.
 
 ${buyerContext}
 
-Search the following sources to find real data:
+Search the following sources:
 
 For Section 1 (Forum discussions):
-- Reddit: search r/foodscience, r/foodsafety, r/waterpurification, r/manufacturing, r/HVAC, r/facilities, r/labrats, and general Reddit search for terms like "${icpIndustry} water treatment", "${icpIndustry} disinfection", "${icpAudience} water quality"
-- LinkedIn: search for posts and discussions by people with job titles: ${icpAudience || 'relevant roles'} in ${icpIndustry}
-- Stack Exchange (Engineering, Chemistry, Sustainability) for technical questions from this type of buyer
-- Trade publication comment sections and industry forum sites (WaterWorld, Food Safety Magazine, FoodNavigator, Process Industry Forum, Aqua Magazine)
+- Reddit: r/foodscience, r/foodsafety, r/waterpurification, r/manufacturing, r/facilities — search for "${icpIndustry} water treatment", "${icpIndustry} disinfection", "${icpAudience} ozone"
+- LinkedIn posts and articles from people with job titles: ${icpAudience || 'relevant roles'} in ${icpIndustry}
+- Stack Exchange (Engineering, Chemistry, Sustainability) for technical questions from this buyer type
+- Industry forums and trade publication comment sections: WaterWorld, Food Safety Magazine, FoodNavigator, Process Industry Forum
 
 For Section 2 (Terminology):
-- Search LinkedIn for job postings with titles like ${icpAudience || 'plant manager, QA manager'} to see what technical language they use
-- Search for RFPs and tender documents related to "${icpIndustry} water treatment" or "${icpIndustry} disinfection system"
-- Look at trade publication articles written for this audience — note the vocabulary used
+- LinkedIn job postings for titles like ${icpAudience || 'plant manager, QA manager, facility director'} to extract technical vocabulary
+- RFP and tender documents for "${icpIndustry} water treatment" or "${icpIndustry} disinfection system"
+- Trade publication articles written for this audience
 
 For Section 3 (Vendor expectations):
-- Search for RFP documents or tender specifications for water treatment or disinfection systems in ${icpIndustry}
-- Search for buyer guides or technology comparison articles in trade publications for this industry
-- Search for conference proceedings or white papers from industry associations related to ${icpIndustry}
+- RFP and tender specifications for water treatment or disinfection systems in ${icpIndustry}
+- Buyer guides or technology comparison reports in trade publications for this industry
+- Industry association white papers or conference proceedings
 
-Only return what you actually find through this research.`;
+Only return what you find through search. Omit anything you cannot source.`;
 
 const httpBody = {
-  model: "gemini-2.5-pro-preview-03-25",
-
-  system_instruction: {
-    parts: [{
-      text: systemInstruction
-    }]
-  },
-
-  contents: [
+  model: "sonar-pro",
+  messages: [
     {
-      role: "user",
-      parts: [{
-        text: userPrompt
-      }]
-    }
-  ],
-
-  tools: [
-    {
-      google_search: {}
+      role: "system",
+      content: systemPrompt
     },
     {
-      urlContext: {}
+      role: "user",
+      content: userPrompt
     }
   ],
-
-  generationConfig: {
-    maxOutputTokens: 32000,
-    temperature: 1.0,
-    topP: 0.95
-  }
+  temperature: 0.1,
+  return_citations: true,
+  return_related_questions: false
 };
 
 return [{
