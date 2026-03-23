@@ -18,7 +18,7 @@ const articleData = {
 };
 
 const httpBody = {
-  model: "sonar-deep-research",
+  model: "gemini-3.1",
   messages: [
     {
       role: "system",
