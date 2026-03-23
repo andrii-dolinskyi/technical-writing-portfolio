@@ -20,31 +20,27 @@ const articleData = {
   clientProduct:  cleanText(row['clientProduct']),
   clientIndustry: cleanText(row['clientIndustry']),
 
-  // ICP 1
   ICPOneName:       cleanText(row['ICPOneName']),
   ICPOneIndustry:   cleanText(row['ICPOneIndustry']),
   ICPOneRegion:     cleanText(row['ICPOneRegion']),
   ICPOneAudience:   cleanText(row['ICPOneAudience']),
   ICPOnePainPoints: cleanText(row['ICPOnePainPoints']),
 
-  // ICP 2
   ICPTwoName:       cleanText(row['ICPTwoName']),
   ICPTwoIndustry:   cleanText(row['ICPTwoIndustry']),
   ICPTwoRegion:     cleanText(row['ICPTwoRegion']),
   ICPTwoAudience:   cleanText(row['ICPTwoAudience']),
   ICPTwoPainPoints: cleanText(row['ICPTwoPainPoints']),
 
-  // ICP 3
   ICPThreeName:       cleanText(row['ICPThreeName']),
   ICPThreeIndustry:   cleanText(row['ICPThreeIndustry']),
   ICPThreeRegion:     cleanText(row['ICPThreeRegion']),
   ICPThreeAudience:   cleanText(row['ICPThreeAudience']),
   ICPThreePainPoints: cleanText(row['ICPThreePainPoints']),
 
-  // Content guidelines
-  claimsAvoid:   cleanText(row['claimsAvoid']),
-  topicsAvoid:   cleanText(row['topicsAvoid']),
-  contentTone:   cleanText(row['contentTone']),
+  claimsAvoid:    cleanText(row['claimsAvoid']),
+  topicsAvoid:    cleanText(row['topicsAvoid']),
+  contentTone:    cleanText(row['contentTone']),
   clientKeywords: cleanText(row['clientKeywords']),
 };
 
